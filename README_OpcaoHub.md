@@ -224,6 +224,7 @@ Sistema para organizar e registrar a separação de mercadorias por carga. Cada 
   - *"Seguiu na carga do motorista do Depósito."*
 - **Copiar mensagem:** um clique copia o texto gerado.
 - **Imprimir:** gera uma visualização formatada da separação para impressão.
+- **Copiar assistencias:** do lado de cada motorista há um botão que copia o número de todas as assistências relacionadas à ele. E ao lado do dia da separação este botão copia todas as assistências da separação daquele dia. Esta funcionalidade facilita a utilização do SGV Turbo para a alteração de status e novas mensagens nas assistências.
 
 Transportadoras reconhecidas automaticamente: Dominalog, Jadlog, Granado, Lima, RX e Depósito.
 
@@ -314,4 +315,54 @@ O Opção Hub é acessado por um link no navegador — no computador ou no celul
 - Nenhum dado de cliente ou fornecedor é fornecido a terceiros ou armazenado em ambiente que não seja da própria empresa.
 ---
 
-*Idealizado e desenvolvido por Rodrigo Miller*
+🛠️ Como foi construído — Tecnologias e conceitos utilizados
+
+🧱 Base dos aplicativos
+React — biblioteca para construir interfaces visuais. Em vez de recarregar a página inteira a cada ação, atualiza apenas o trecho da tela que mudou. Cada parte da interface (botão, tabela, modal) é um componente reutilizável.
+TypeScript — camada sobre o JavaScript que exige que o código declare antecipadamente qual tipo de dado cada variável recebe (número, texto, lista etc.), evitando erros silenciosos.
+Vite — ferramenta que compila o código e gera a versão final para publicação.
+
+🎨 Interface visual
+Tailwind CSS — framework de estilos aplicados diretamente no código, sem arquivos CSS separados.
+shadcn/ui + Radix UI — coleção de componentes visuais prontos (modais, tabelas, botões, calendários) com acessibilidade garantida em diferentes navegadores e tamanhos de tela.
+Lucide React — biblioteca de ícones em formato SVG, nítidos em qualquer resolução.
+Recharts — biblioteca para gerar os gráficos de barras, pizza, linha e radar nos painéis de Analytics.
+
+🗄️ Banco de dados e backend
+Supabase é a plataforma central de todos os sistemas. Reúne em um único lugar:
+
+PostgreSQL — banco de dados relacional onde todas as informações são armazenadas. As tabelas se relacionam entre si (uma peça pertence a um produto, que pertence a um fabricante).
+Autenticação — gerencia login, sessões e restrição de acesso por domínio de e-mail.
+Realtime (WebSocket) — mantém uma conexão aberta entre o navegador e o banco. Quando alguém altera um dado, todos os outros usuários recebem a atualização instantaneamente, sem recarregar a página.
+Row Level Security (RLS) — regras de acesso definidas no próprio banco. Mesmo acessando a API diretamente, cada usuário só vê e altera o que tem permissão.
+Edge Functions — trechos de código que rodam nos servidores do Supabase, usados quando a lógica não deve ficar exposta no navegador.
+
+
+🔄 Gerenciamento de estado e dados
+React Query — busca, armazena em cache e sincroniza dados com o servidor. Evita buscas repetidas desnecessárias ao navegar entre telas.
+React Context API — compartilha informações globais entre os componentes sem precisar passá-las manualmente em cada nível (ex: qual tela está aberta, favoritos, modo escuro).
+React Router — gerencia a navegação entre telas e implementa rotas protegidas, que redirecionam para o login caso o usuário não esteja autenticado.
+Hooks do React (useState, useEffect, useMemo, useCallback) — funções que permitem que os componentes guardem valores, reajam a mudanças e calculem resultados sem refazer trabalho desnecessário.
+
+🤖 Inteligência Artificial
+Anthropic Claude API — API usada para o Assistente IA (Marquinhos). A integração usa streaming de respostas, fazendo o texto aparecer na tela à medida que é gerado. O Marquinhos opera sobre uma base de conhecimento personalizada com os processos e regras da Opção Móveis, editável por administradores.
+
+📊 Planilhas
+SheetJS (xlsx) — gera e lê arquivos .xlsx diretamente no navegador. Usado para exportação de assistências e importação de produtos em massa via CSV.
+A importação de CSV usa detecção automática de colunas por fuzzy matching — identifica qual coluna é o código, a descrição, o fabricante etc., mesmo que os nomes dos cabeçalhos variem entre planilhas.
+
+⚙️ Automação
+Google Apps Script — scripts que rodam nos servidores do Google com acesso direto ao Gmail e ao Google Sheets. Dois processos são automatizados via triggers de tempo (agendamentos):
+
+Leitura diária de e-mails de solicitação de assistência e registro automático na planilha.
+Cobrança semanal automática de fabricantes sem resposta, enviada no mesmo thread do e-mail original.
+
+
+🔐 Segurança
+OAuth via Google — login feito com a conta @opcaomoveis, sem senha separada. O Supabase valida o domínio antes de liberar o acesso.
+PIN individual por operação — no Estoque da Assistência, cada movimentação exige o PIN pessoal do responsável, garantindo rastreabilidade mesmo em computadores compartilhados.
+
+🌐 Infraestrutura
+Os apps são publicados via Lovable, que hospeda o código compilado como site estático — rodando inteiramente no navegador, sem servidor próprio. Toda a lógica de dados vai diretamente para o Supabase.
+
+Idealizado e desenvolvido por Rodrigo Miller
