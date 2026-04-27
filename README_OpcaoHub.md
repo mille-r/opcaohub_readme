@@ -37,7 +37,7 @@ O menu lateral está organizado em três seções:
 |---|---|
 | 📦 [Separação](#-separação) | Controle de separação de cargas por motorista e cidade, com mensagem automática de status |
 | 🛒 [E-commerce](#-e-commerce) | Controle de etiquetas e assistências de pedidos do e-commerce |
-| 🚚 Vale Frete | Controle de fretes que devem ser cobrados de vendedores que cometeram algum erro que precisou de nova entrega ao cliente |
+| 🚚 Vale Frete | Controle de fretes que devem ser cobrados de vendedores que cometeram algum erro|
 | 📋 [Recebimento de Assistências](#-recebimento-de-assistências) | Registro de peças recebidas dos fabricantes |
 | 📅 Agenda de Cargas | Agenda para consulta de datas das cargas ja confirmadas com os fabricantes |
 | 📋 NF de Devolução | Modelo de planilha a ser preenchido para solicitação de NF de Devolução ao Depto. Fiscal |
