@@ -37,10 +37,10 @@ O menu lateral está organizado em três seções:
 |---|---|
 | 📦 [Separação](#-separação) | Controle de separação de cargas por motorista e cidade, com mensagem automática de status |
 | 🛒 [E-commerce](#-e-commerce) | Controle de etiquetas e assistências de pedidos do e-commerce |
-| 🚚 Vale Frete | Controle de vales-frete emitidos |
+| 🚚 Vale Frete | Controle de fretes que devem ser cobrados de vendedores que cometeram algum erro que precisou de nova entrega ao cliente |
 | 📋 [Recebimento de Assistências](#-recebimento-de-assistências) | Registro de peças recebidas dos fabricantes |
-| 📅 Agenda de Cargas | Agendamento e controle de cargas |
-| 📋 NF de Devolução | Controle de notas fiscais de devolução |
+| 📅 Agenda de Cargas | Agenda para consulta de datas das cargas ja confirmadas com os fabricantes |
+| 📋 NF de Devolução | Modelo de planilha a ser preenchido para solicitação de NF de Devolução ao Depto. Fiscal |
 
 ### Grades
 Acesso direto às grades de entrega das transportadoras parceiras: **Dominalog**, **Granado**, **Lima** e **RX**.
@@ -183,7 +183,7 @@ Painel com gráficos e indicadores de desempenho:
 ## 📤 Assistências Solicitadas
 
 Módulo que exibe o acompanhamento das assistências que foram solicitadas e enviadas para os fabricantes, permitindo visualizar o status de cada solicitação sem precisar navegar para outra tela. O módulo apresenta uma lista com filtragem de data/fabricante e faz uma analise de quais e-mails foram respondidos nos ultimos 7 dias. Se uma solicitação foi feita e o fabricante ainda não respondeu neste periodo, ele envia um e-mail automatico fazendo uma cobrança sobre aquela assistência.
-O Dashboard de analytics fornece informações para acompanhamento de performance de fabricantes. Mostrando taxa de resposta, maior número de solicitações e compara os fabricantes.
+O Dashboard de analytics fornece informações para acompanhamento de performance de fornecedores. Mostrando taxa de resposta, maior número de solicitações e compara os fabricantes.
 
 ---
 
