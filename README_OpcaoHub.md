@@ -290,14 +290,6 @@ Gráficos e métricas de recebimentos por fabricante e por período.
 
 ---
 
-## 🔥 SGV Turbo
-
-O **SGV Turbo** é uma extensão para o Google Chrome que automatiza tarefas repetitivas no sistema interno SGV e no sistema de etiquetas Vercan. Por ser uma extensão de navegador, ela funciona de forma independente — é instalada diretamente no Chrome e aparece como um painel lateral nas páginas certas do SGV automaticamente, sem precisar abrir o Hub.
-
-Para a documentação completa de todas as funcionalidades do SGV Turbo, consulte o README específico da extensão.
-
----
-
 ## 💡 Como acessar
 
 O Opção Hub é acessado por um link no navegador — no computador ou no celular. Após o login com e-mail e senha, o sistema detecta automaticamente o perfil do usuário e libera os módulos correspondentes.
