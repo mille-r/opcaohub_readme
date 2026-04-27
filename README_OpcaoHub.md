@@ -184,6 +184,13 @@ Painel com gráficos e indicadores de desempenho:
 
 Módulo que exibe o acompanhamento das assistências que foram solicitadas e enviadas para os fabricantes, permitindo visualizar o status de cada solicitação sem precisar navegar para outra tela. O módulo apresenta uma lista com filtragem de data/fabricante e faz uma analise de quais e-mails foram respondidos nos ultimos 7 dias. Se uma solicitação foi feita e o fabricante ainda não respondeu neste periodo, ele envia um e-mail automatico fazendo uma cobrança sobre aquela assistência.
 O Dashboard de analytics fornece informações para acompanhamento de performance de fornecedores. Mostrando taxa de resposta, maior número de solicitações e compara os fabricantes.
+Esse aplicativo é alimentado por um sistema Automático de Controle de Assistências Técnicas
+O script roda automaticamente via Google App Script e cuida de dois processos que antes precisariam ser feitos à mão:
+1. Registrar os pedidos de assistência recebidos por e-mail
+Todo dia às 8h da manhã, o sistema acessa a caixa de e-mail da assistência técnica, lê as mensagens novas e extrai automaticamente as informações importantes de cada pedido — o número da assistência, o produto, o fabricante responsável e o e-mail de destino. Tudo isso é salvo direto na planilha de controle, com a data e o status "Solicitação enviada". Esta planilha é a base para o aplicativo que faz o tratamento da aparência e facilita as análises.
+2. Cobrar os fabricantes que não responderam
+Todo dia de segunda-feira às 9h, o sistema percorre a planilha e verifica se cada fabricante já respondeu ao e-mail. Se um fabricante ficou 7 dias sem dar retorno, o sistema manda automaticamente um e-mail de cobrança no mesmo thread original. Se passar mais 7 dias sem resposta, manda uma segunda cobrança. Quando o fabricante responde, o status é atualizado automaticamente para "Respondido pelo fabricante".
+
 
 ---
 
