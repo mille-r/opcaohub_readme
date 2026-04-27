@@ -10,14 +10,14 @@
 
 Além de ser a porta de entrada para todos os sistemas, o Hub tem recursos próprios que tornam o uso do dia a dia mais prático:
 
-- **🤖 Assistente IA (Marquinhos)** — um assistente de inteligência artificial treinado com os processos, regras e casos da assistência técnica da Opção Móveis. Você pode perguntar sobre procedimentos, prazos, regras de aprovação de DVs, casos específicos e muito mais — sem precisar perguntar para ninguém ou procurar em documentos.
+- **🤖 Assistente IA (Marquinhos)** — um assistente de inteligência artificial treinado com os processos, regras e casos da assistência técnica da Opção Móveis. Você pode perguntar sobre procedimentos, prazos, regras de aprovação de DVs, casos específicos e muito mais — sem precisar perguntar para ninguém ou procurar em documentos. O Marquinhos responde de acordo com a sua base de conhecimento que pode ser editada a qualquer  momento por um usuário que tenha os privilégios de Administrador.
 - **📧 E-mail dos Fabricantes** — lista completa de e-mails de fabricantes e representantes cadastrados, com busca e botão para copiar o contato com um clique. Sempre atualizada e acessível de qualquer lugar.
 - **🗒️ Notas Rápidas** — bloco de notas pessoal dentro do Hub para anotar lembretes, observações e pendências sem sair da tela.
 - **📢 Avisos Administrativos** — administradores podem publicar comunicados que aparecem na tela inicial para todos os usuários ao abrir o Hub.
-- **⭐ Favoritos** — qualquer sistema pode ser marcado como favorito e aparece no topo do menu para acesso rápido, com ordem personalizável por arrastar.
+- **⭐ Favoritos** — qualquer aplicativo pode ser marcado como favorito e aparece no topo do menu para acesso rápido, com ordem personalizável por arrastar.
 - **⌨️ Atalhos de teclado** — navegue entre os sistemas sem usar o mouse (Alt+1 ao Alt+7, Ctrl+K para busca rápida).
 - **🌙 Modo escuro** — alterna entre tema claro e escuro com um clique.
-- **📋 Histórico de atualizações** — registro de todas as novidades e melhorias lançadas em cada versão.
+- **📋 Histórico de atualizações** — registro de todas as novidades e melhorias lançadas em cada versão. Toda vez que uma versão é lançada ela é informada no "Avisos Administrativos".
 
 ---
 
@@ -49,7 +49,7 @@ Acesso direto às grades de entrega das transportadoras parceiras: **Dominalog**
 
 ## 📦 Estoque da Assistência
 
-**O problema que resolve:** O estoque de peças da assistência técnica era controlado de forma manual e sem registro formal. Não havia como saber quem retirou uma peça, quando, para qual assistência, ou qual era o saldo real disponível.
+**O problema que resolve:** A assistência técnica era controlado de forma manual, não havia um controle de estoque ou registro formal. Não havia como saber quem retirou uma peça, quando, para qual assistência, ou qual era o saldo real disponível de cada peça.
 
 **O que o sistema faz:**
 
@@ -67,25 +67,24 @@ A tela principal mostra todos os fabricantes cadastrados. Ao clicar em um fabric
 - **Retirar do estoque:** registra a saída de peças, com campo de observação para identificar para qual finalidade foram retiradas. Requer PIN.
 - **Cadastrar nova peça:** adiciona uma nova peça ao produto (número da peça, descrição e quantidade inicial).
 
+### Transferências
+
+Registra produtos retirados do estoque para atender diretamente uma assistência específica, vinculando o produto ao número da assistência. Enquanto a transferência está ativa, o produto aparece como "em uso".
+
+- O botão **Devolver** encerra a transferência (produto voltou ao estoque) e registra no Devolvidos ao Estoque
+- Exibe as últimas 100 transferências com produto, número da assistência, responsável e data.
+
 ---
 
 ### Devolvidos ao Estoque
 
-Registra produtos que retornaram ao estoque geral após uma assistência — por exemplo, um produto que foi separado mas não foi utilizado.
+Registra produtos que retornaram ao estoque geral após uma assistência — por exemplo, um armário que foi retirado do estoque para a retirada de uma peça pra atender uma assistência. Quando este espelho chega pelo fabricante o produto é retornado ao estoque do depósito.
 
 - Exibe o histórico das últimas 50 devoluções com produto, quantidade, responsável e data.
 - Registros podem ser excluídos com confirmação por PIN.
 
 ---
 
-### Transferências
-
-Registra produtos retirados do estoque para atender diretamente uma assistência específica, vinculando o produto ao número da assistência. Enquanto a transferência está ativa, o produto aparece como "em uso".
-
-- O botão **Devolver** encerra a transferência (produto voltou ao estoque).
-- Exibe as últimas 100 transferências com produto, número da assistência, responsável e data.
-
----
 
 ### Histórico de Movimentações
 
@@ -118,7 +117,7 @@ Painel com indicadores de movimentação do estoque:
 
 ## 📋 Controle de Assistências
 
-**O problema que resolve:** O acompanhamento das ordens de assistência era fragmentado e sem visibilidade central. Não havia registro digital do que estava pronto para entrega, o que estava aguardando envio para fábrica, ou o histórico completo das assistências processadas.
+**O problema que resolve:** O acompanhamento das ordens de assistência era fragmentado e sem visibilidade central. Não havia registro digital do que estava pronto para entrega, o que estava embalado ou o que não estava pronto. Por diversas vezes assistências foram embaladas em duplicidade por não ter um controle.
 
 **O que o sistema faz:**
 
@@ -128,11 +127,11 @@ Sistema com login individual para registro e acompanhamento completo das ordens 
 
 ### Registro de nova assistência
 
-Formulário no lado esquerdo da tela para registrar uma nova OS:
+Formulário no lado esquerdo da tela para registrar uma nova ASS:
 
-- Número da OS, nome do cliente, descrição do produto e defeito.
+- Número da ASS, nome do cliente, descrição do produto e defeito.
 - Marcação se é um **pedido de fábrica** (produto a ser enviado ao fabricante).
-- Marcação se é um pedido de **e-commerce**, com campos de dimensões (altura, largura, comprimento, peso, volume) para facilitar a emissão de etiqueta.
+- Marcação se é um pedido de **e-commerce**, com campos de dimensões (altura, largura, comprimento, peso, volume) para automatizar o preenchimento no app E-commerce para a emissão de etiqueta.
 
 ---
 
@@ -140,14 +139,14 @@ Formulário no lado esquerdo da tela para registrar uma nova OS:
 
 Lista as assistências registradas, organizadas por data, em três abas:
 
-- **Prontas:** assistências verificadas e aguardando entrega ao cliente.
+- **Prontas:** assistências embaladas que irão na próxima carga.
 - **Fábrica:** assistências cujo produto precisa ser enviado ao fabricante.
 - **E-commerce:** assistências originadas de pedidos de e-commerce.
 
 Ações disponíveis por assistência:
 
 - **Verificar / Desverificar:** marca a assistência como conferida, registrando quem verificou e quando. Administradores podem remover a verificação se necessário.
-- **Embalar (Fábrica):** registra que o produto foi embalado para envio ao fabricante, com data e responsável. Para e-commerce, solicita as dimensões da embalagem antes de confirmar.
+- **Embalar (Fábrica):** registra que o produto foi embalado para envio , com data e responsável. Para e-commerce, solicita as dimensões da embalagem antes de confirmar. E ao acusar o recebimento de uma assistência de e-commerce o número dela e as medidas já são preenchidos automaticamente no app de E-commerce.
 - **Editar:** altera os dados da assistência.
 - **Excluir:** remove a assistência com confirmação.
 - **Exportar para Excel:** gera uma planilha `.xlsx` com todas as assistências do período filtrado.
@@ -183,7 +182,8 @@ Painel com gráficos e indicadores de desempenho:
 
 ## 📤 Assistências Solicitadas
 
-Módulo que exibe o acompanhamento das assistências que foram solicitadas e enviadas para os fabricantes, permitindo visualizar o status de cada solicitação sem precisar navegar para outra tela.
+Módulo que exibe o acompanhamento das assistências que foram solicitadas e enviadas para os fabricantes, permitindo visualizar o status de cada solicitação sem precisar navegar para outra tela. O módulo apresenta uma lista com filtragem de data/fabricante e faz uma analise de quais e-mails foram respondidos nos ultimos 7 dias. Se uma solicitação foi feita e o fabricante ainda não respondeu neste periodo, ele envia um e-mail automatico fazendo uma cobrança sobre aquela assistência.
+O Dashboard de analytics fornece informações para acompanhamento de performance de fabricantes. Mostrando taxa de resposta, maior número de solicitações e compara os fabricantes.
 
 ---
 
@@ -234,7 +234,7 @@ Gráficos com estatísticas das separações: volume por período, transportador
 
 **O que o sistema faz:**
 
-Sistema para controlar o fluxo completo das assistências de e-commerce, da emissão da etiqueta até a finalização.
+Sistema para controlar o fluxo completo das assistências de e-commerce, da emissão da etiqueta até a finalização. Com preenchimento automático integrado pelo app de Controle de assistências e fácil consulta.
 
 ---
 
@@ -268,7 +268,7 @@ Ferramenta para responder clientes que perguntam sobre o andamento do pedido:
 
 **O que o sistema faz:**
 
-Sistema para registrar e acompanhar o recebimento de peças enviadas pelos fabricantes para atender as ordens de assistência.
+Sistema para registrar e acompanhar o recebimento de peças enviadas pelos fabricantes para atender as ordens de assistência. Organizado por fabricante, data e com a Nota Fiscal de cada assistência. Com etiqueta de status informando qual era a situação daquela assistência quando houve o recebimento do envio do fabricante (Assistência ja atendida ou se a peça que chegou deverá ser utilizada para finalizar a assistência).
 
 ---
 
@@ -292,7 +292,7 @@ Gráficos e métricas de recebimentos por fabricante e por período.
 
 ## 💡 Como acessar
 
-O Opção Hub é acessado por um link no navegador — no computador ou no celular. Após o login com e-mail e senha, o sistema detecta automaticamente o perfil do usuário e libera os módulos correspondentes.
+O Opção Hub é acessado por um link no navegador — no computador ou no celular. Após o login com e-mail e senha que seja do dominio @opcaomoveis, o sistema detecta automaticamente o perfil do usuário e libera os módulos correspondentes.
 
 **Não é necessário instalar nada.** Basta abrir o link e fazer login.
 
@@ -303,7 +303,8 @@ O Opção Hub é acessado por um link no navegador — no computador ou no celul
 - Todos os sistemas do Hub compartilham o mesmo banco de dados, garantindo que as informações estejam sempre atualizadas e sincronizadas em tempo real entre todos os usuários simultaneamente.
 - O acesso é protegido por login individual. Algumas ações dentro dos apps exigem confirmação por PIN pessoal, garantindo rastreabilidade de quem fez cada movimentação.
 - O sistema funciona em computadores e celulares. A interface se adapta automaticamente ao tamanho da tela.
-
+- O sistema só pode ser acessado ao fazer login com um e-mail da empresa. Nenhum outro tipo de e-mail consegue ter o acesso.
+- Nenhum dado de cliente ou fornecedor é fornecido a terceiros ou armazenado em ambiente que não seja da própria empresa.
 ---
 
-*Idealizado e desenvolvido por Rodrigo Miller — Opção Móveis*
+*Idealizado e desenvolvido por Rodrigo Miller*
